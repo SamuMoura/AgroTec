@@ -1,0 +1,81 @@
+.sensor-card {
+    background-color: #f3f3f3;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sensor-card:hover {
+    transform: scale(1.03);
+}
+
+.card-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.toggle-button {
+    background-color: #2a7f42;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.toggle-button:hover {
+    background-color: #216c36;
+}
+
+.map-container {
+    position: relative;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 1rem 0;
+    width: 100%;
+    height: auto;
+}
+
+.map-image {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.map-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.indicator-icon {
+    font-size: 1.5rem;
+}
+
+.card-details {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6rem;
+    text-align: left;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.card-details p {
+    margin: 0.5rem 0;
+}

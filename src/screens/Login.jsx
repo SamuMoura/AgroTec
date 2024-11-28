@@ -1,19 +1,48 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebaseConfig';
 import '../styles/Login.css';
 import logo from '../assets/AgroTec.png';
-import axios from 'axios';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    // Credenciais locais para testes
+    const testCredentials = {
+        email: 'teste@agrotec.com',
+        password: '123456',
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
+
+        // Verificação local
+        if (email === testCredentials.email && password === testCredentials.password) {
+            alert('Login realizado localmente com sucesso!');
+            navigate('/menu', { state: { userName: email } });
+            return;
+        }
+
+        // Se não for local, tentar com o Firebase
         try {
-            const response = await axios.post('http://localhost:5000/login', { username, password });
-            alert(response.data);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user; // Obtém os detalhes do usuário
+            alert(`Login realizado com sucesso via Firebase! Bem-vindo, ${user.email}!`);
+            navigate('/menu', { state: { userName: user.email } });
         } catch (error) {
-            alert(error.response ? error.response.data : 'Erro ao conectar ao servidor.');
+            // Mensagens de erro amigáveis
+            let errorMessage = 'Erro ao realizar login.';
+            if (error.code === 'auth/user-not-found') {
+                errorMessage = 'Usuário não encontrado.';
+            } else if (error.code === 'auth/wrong-password') {
+                errorMessage = 'Senha incorreta.';
+            } else if (error.code === 'auth/invalid-email') {
+                errorMessage = 'E-mail inválido.';
+            }
+            alert(errorMessage);
         }
     };
 
@@ -23,11 +52,11 @@ const Login = () => {
                 <img src={logo} alt="AgroTec Logo" className="login-logo" />
                 <form onSubmit={handleLogin}>
                     <input
-                        type="text"
-                        placeholder="Usuário"
+                        type="email"
+                        placeholder="E-mail"
                         className="input-field"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         type="password"

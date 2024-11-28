@@ -1,0 +1,76 @@
+.cadastro-container {
+    padding: 20px;
+    background-color: #f9f7d9;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastro-form {
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    padding: 2em 3em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+.cadastro-form h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.cadastro-form input,
+.cadastro-form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    border: 1px solid #006600;
+    border-radius: 30px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.cadastro-form input:focus,
+.cadastro-form select:focus {
+    border-color: #004d00;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.cadastrar-button {
+    background-color: #006600;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 120px;
+}
+
+.cadastrar-button:hover {
+    background-color: #004d00;
+}
+
+.voltar-button {
+    background-color: #ffffff;
+    color: #006600;
+    border: 1px solid #006600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 120px;
+}
+
+.voltar-button:hover {
+    background-color: #f1f1f1;
+}
